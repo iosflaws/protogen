@@ -101,7 +101,7 @@ local Player = game.Players.LocalPlayer
 		local bbv,bullet
 		if Bypass == "death" then
 			bullet = game.Players.LocalPlayer.Character["HumanoidRootPart"]
-			bullet.Transparency = 0.3
+			bullet.Transparency = 0.7
 			bullet.CanCollide = false
 			bullet.Massless = true
 			if bullet:FindFirstChildOfClass("Attachment") then
