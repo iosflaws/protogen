@@ -73,7 +73,7 @@ local playerss = workspace.non
 local bbv,bullet
 if Bypass == "death" then
 	bullet = game.Players.LocalPlayer.Character["HumanoidRootPart"]
-	bullet.Transparency = (FlingBlockInvisible ~= true and 0 or 1)
+	bullet.Transparency = 0.4
 	bullet.Massless = true
 	if bullet:FindFirstChildOfClass("Attachment") then
 		for _,v in pairs(bullet:GetChildren()) do
