@@ -1567,3 +1567,11 @@ end
 --//====================================================\\--
 --||			  		 END OF SCRIPT
 --\\====================================================//--
+
+local notifSound = Instance.new("Sound",workspace)
+notifSound.PlaybackSpeed = 1.0
+notifSound.Volume = 0.5
+notifSound.SoundId = "rbxassetid://6607204501"
+notifSound.PlayOnRemove = true
+notifSound:Destroy()
+game.StarterGui:SetCore("SendNotification", {Title = "Flawed-Ware", Text = "Loaded Successfully!", Icon = "rbxthumb://type=Asset&id=10333866470", Duration = 5, Button1 = "Okay"})
