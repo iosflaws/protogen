@@ -1,8 +1,3 @@
-game:GetService("StarterGui"):SetCore("SendNotification", { 
-	Title = "Notification";
-	Text = "Executed! Thanks for using FlawedWare! This is a Anti-ban.";
-	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
-Duration = 16;
 --flaws1337 reuploaded this.
 local logs = true --Enables logs or not
 local ChatMain = require(game:GetService("Players").LocalPlayer.PlayerScripts.ChatScript.ChatMain)
