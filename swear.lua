@@ -1,3 +1,8 @@
+game:GetService("StarterGui"):SetCore("SendNotification", { 
+	Title = "Notification";
+	Text = "Executed! Thanks for using FlawedWare! This Is a Swear Bypass.";
+	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
+Duration = 16;
 local Bypasses = {
     ["ass"] = "as{{aieixzvzx:s}}",
     ["asshole"] = "as{{aieixzvzx:shole}}",
