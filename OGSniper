@@ -202,7 +202,7 @@ local hrp2 = hrp:Clone()
 
 hrp2.Parent = char
 hrp.Name = "hi"
-hrp.Transparency = 0
+hrp.Transparency = 0.7
 hrp.Anchored = false
 if hrp:FindFirstChildOfClass("AlignPosition") then
 	hrp:FindFirstChildOfClass("AlignPosition"):Destroy()
