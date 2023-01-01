@@ -478,7 +478,7 @@ ATTACK = true
         kan.TimePosition = 0
         kan.PlaybackSpeed = 1
         kan.Pitch = 1
-        kan.SoundId = "rbxassetid://130767489"
+        kan.SoundId = "rbxassetid://6556067989"
         kan.Name = "bang"
         kan:Play()
 		for i = 0, 0.3, 0.1 / Animation_Speed do
