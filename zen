@@ -50,14 +50,6 @@ local Fling = true
 local FlingBlockInvisible = false
 local HighlightFlingBlock = false
 
------------------
---//====================================================\\--
---|| CONVERTED BY Bullets#7561
---|| SETTINGS BY X3.rar#4551
---\\====================================================//--
- 
---Hat = https://web.roblox.com/catalog/5063578607/Cyberpunk-Sniper
-
 Bypass = "death"
 loadstring(game:HttpGet('https://paste.ee/r/KAdwk'))()
 
