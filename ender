@@ -1,10 +1,10 @@
-game:GetService("StarterGui"):SetCore("SendNotification", { 
-	Title = "Notification";
-	Text = "Executed! Thanks for using Flawed.Dev! Reanimating, please wait!";
-	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
-Duration = 16;
+local h = Instance.new("Message")
+h.Parent = Workspace
+h.Text = "Flawed Reanimation is Loading..."
+wait(6)
+h:Remove()
 
-wait(10)
+wait(1)
  
 local player = game.Players.LocalPlayer.Character
  
@@ -50,67 +50,109 @@ local Fling = true
 local FlingBlockInvisible = false
 local HighlightFlingBlock = false
 
---// MAIN \\--
- 
+
 Bypass = "death"
-loadstring(game:GetObjects("rbxassetid://5325226148")[1].Source)()
------OPTIONS
- 
-local IsDead = false
-local StateMover = true
- 
-local playerss = workspace.non
-local bbv,bullet
-if Bypass == "death" then
-	bullet = game.Players.LocalPlayer.Character["HumanoidRootPart"]
-	bullet.Transparency = 0.4
-	bullet.Massless = true
-	if bullet:FindFirstChildOfClass("Attachment") then
-		for _,v in pairs(bullet:GetChildren()) do
-			if v:IsA("Attachment") then
-				v:Destroy()
+loadstring(game:HttpGet('https://paste.ee/r/KAdwk'))()
+
+for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+if v:IsA("BasePart") then
+game:GetService("RunService").Heartbeat:connect(function()
+v.Velocity = Vector3.new(45,0,0)
+end)
+end
+end
+
+for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+if v:IsA("Accessory") then
+game:GetService("RunService").Heartbeat:connect(function()
+v.Handle.Velocity = Vector3.new(45,0,0)
+end)
+end
+end
+
+
+if game:GetService("RunService"):IsStudio() then
+wait(1)
+else
+wait(1/60)	
+end
+
+Player = game:GetService("Players").LocalPlayer
+
+local Player = game.Players.LocalPlayer
+
+
+		local Mouse,mouse = Player:GetMouse(), Player:GetMouse()
+
+		local IsDead = false
+		local StateMover = true
+
+		Bypass = "death"
+		local playerss = workspace.non
+		local bbv,bullet
+		if Bypass == "death" then
+			bullet = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+			bullet.Transparency = 0.7
+			bullet.CanCollide = false
+			bullet.Massless = true
+			if bullet:FindFirstChildOfClass("Attachment") then
+				for _,v in pairs(bullet:GetChildren()) do
+					if v:IsA("Attachment") then
+						v:Destroy()
+					end
+				end
 			end
+
+			bbv = Instance.new("BodyPosition",bullet)
+		    bbv.Position = playerss.Torso.CFrame.p
 		end
-	end
- 
-	bbv = Instance.new("BodyPosition",bullet)
-    bbv.Position = playerss.Torso.CFrame.p
-end
- 
-if Bypass == "death" then
-coroutine.wrap(function()
-	while true do
-		if not playerss or not playerss:FindFirstChildOfClass("Humanoid") or playerss:FindFirstChildOfClass("Humanoid").Health <= 0 then IsDead = true; return end
-		if StateMover then
-			bbv.Position = playerss.Torso.CFrame.p
-    		bullet.Position = playerss.Torso.CFrame.p
+
+		if Bypass == "death" then
+		coroutine.wrap(function()
+			while true do
+				if not playerss or not playerss:FindFirstChildOfClass("Humanoid") or playerss:FindFirstChildOfClass("Humanoid").Health <= 0 then IsDead = true; return end
+				if StateMover then
+					bbv.Position = playerss.Torso.CFrame.p
+		    		bullet.Position = playerss.Torso.CFrame.p
+				end
+				game:GetService("RunService").RenderStepped:wait()
+			end
+		end)()
 		end
-		game:GetService("RunService").RenderStepped:wait()
-	end
-end)()
-end
- 
-local CDDF = {}
-local DamageFling = function(DmgPer)
-	if IsDead or Bypass ~= "death" or (DmgPer.Name == playerss.Name and DmgPer.Name == "non") or CDDF[DmgPer] or not DmgPer or not DmgPer:FindFirstChildOfClass("Humanoid") or DmgPer:FindFirstChildOfClass("Humanoid").Health <= 0 then return end
-	CDDF[DmgPer] = true; StateMover = false
-	local PosFling = (DmgPer:FindFirstChild("HumanoidRootPart") and DmgPer:FindFirstChild("HumanoidRootPart") .CFrame.p) or (DmgPer:FindFirstChildOfClass("Part") and DmgPer:FindFirstChildOfClass("Part").CFrame.p)
-    bbav = Instance.new("BodyAngularVelocity",bullet)
-    bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-    bbav.P = 1000000000000000000000000000
-    bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
-    game:GetService("Debris"):AddItem(bbav,0.1)
-    bullet.Rotation = playerss.Torso.Rotation
-	for _=1,15 do
-		bbv.Position = PosFling
-		bullet.Position = PosFling
-		wait(0.03)
-	end
-	bbv.Position = playerss.Torso.CFrame.p
-    bullet.Position = playerss.Torso.CFrame.p
-	CDDF[DmgPer] = false; StateMover = true
-end
- 
+
+		if HighlightFlingBlock ~= false then
+		    local Highlight = Instance.new("SelectionBox")
+		    Highlight.Adornee = bullet
+		    Highlight.Color3 = (typeof(FlingHighlightColor)=="Color3" and FlingHighlightColor) or (Color3.fromRGB(0,0,0))
+		    Highlight.Parent = bullet
+		    Highlight.Name = "HighlightBox"
+		end
+
+		bbav = Instance.new("BodyAngularVelocity",bullet)
+		    bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+		    bbav.P = 100000000000000000000000000000
+		    bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
+
+		    bbav = Instance.new("BodyAngularVelocity",bullet)
+		    bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+		    bbav.P = 100000000000000000000000000000
+		    bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
+
+		local CDDF = {}
+
+		Mouse.Button1Down:Connect(function()
+			StateMover = false
+		end)
+
+		Mouse.Button1Up:Connect(function()
+			StateMover = true
+		end)
+
+		game:GetService("RunService").Heartbeat:Connect(function()
+			bbv.Position = Mouse.Hit.p
+			bullet.Position = Mouse.Hit.p
+		end)
+
 loadstring(game:GetObjects("rbxassetid://5425999987")[1].Source)()
 
 local FavIDs = {
@@ -344,7 +386,7 @@ function Damage(Part, hit, minim, maxim, knockback, Type, Property, Delay, HitSo
 	end
          if h ~= nil and hit.Parent.Name ~= char.Name and hit.Parent:FindFirstChild("UpperTorso") ~= nil then
 	
-         print("hi")
+         print("lmao")
          end
 
 	if h ~= nil and hit.Parent.Name ~= char.Name and hit.Parent:FindFirstChild("Torso") ~= nil then
@@ -884,7 +926,7 @@ function CreateSound(ID, PARENT, VOLUME, PITCH)
 end
 
 function Eviscerate(dude)
-print("hi")
+print("lmao")
 end
 function SphereAura(bonuspeed, FastSpeed, type, pos, x1, y1, z1, value, color, outerpos)
 	local type = type
