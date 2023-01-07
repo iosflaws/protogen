@@ -4,7 +4,7 @@ h.Text = "Flawed Reanimation is Loading..."
 wait(6)
 h:Remove()
 
-wait(10)
+wait(1)
  
 local player = game.Players.LocalPlayer.Character
  
