@@ -5,7 +5,7 @@ wait(6)
 h:Remove()
 
 
-wait(10)
+wait(1)
 
 --_reanimate()
 --getgenv().Reanimation = 'Simple'
