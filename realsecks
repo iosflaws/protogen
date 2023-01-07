@@ -1,12 +1,13 @@
 
-game:GetService("StarterGui"):SetCore("SendNotification", { 
-	Title = "Notification";
-	Text = "Executed! Thanks for using Flawed.Dev! Reanimating, please wait!";
-	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
-Duration = 16;
+local h = Instance.new("Message")
+h.Parent = Workspace
+h.Text = "Flawed Reanimation is Loading..."
+wait(6)
+h:Remove()
 
 
-wait(10)
+
+wait(1)
 
 --_reanimate()
 --getgenv().Reanimation = 'Simple'
