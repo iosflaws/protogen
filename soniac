@@ -4,7 +4,14 @@ h.Text = "Flawed Reanimation is Loading..."
 wait(6)
 h:Remove()
 
-loadstring(game:HttpGet('https://pastebin.com/raw/A4camrvr'))()
+for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
+game:GetService("RunService").Heartbeat:connect(function()
+v.Velocity = Vector3.new(0,30,0)
+wait(0.5)
+end)
+end
+end
 
 --[[KillerDarkness0105's/Codex's Sonic script]]--
 Bypass = "death"
