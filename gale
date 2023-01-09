@@ -1,60 +1,35 @@
-print("If Orplayz is showcasing this, he stole it, this is from flawed.dev")
+warn("orplayz is a skid")
 local h = Instance.new("Message")
 h.Parent = Workspace
 h.Text = "Flawed Reanimation is Loading..."
 wait(6)
 h:Remove()
 
-wait(1)
+
 
 local player = game.Players.LocalPlayer.Character
  
-game:GetService("RunService").Heartbeat:Connect(function()
-  player["Head"].Velocity = Vector3.new(0,27.95,0)
-end)
-game:GetService("RunService").Heartbeat:Connect(function()
-  player["Torso"].Velocity = Vector3.new(0,27.95,0)
-end)
-game:GetService("RunService").Heartbeat:Connect(function()
-  player["Left Arm"].Velocity = Vector3.new(0,28.95,0)
-end)
-game:GetService("RunService").Heartbeat:Connect(function()
-  player["Right Arm"].Velocity = Vector3.new(0,28.95,0)
-end)
-game:GetService("RunService").Heartbeat:Connect(function()
-  player["Left Leg"].Velocity = Vector3.new(0,28.95,0)
-end)
-game:GetService("RunService").Heartbeat:Connect(function()
-  player["Right Leg"].Velocity = Vector3.new(0,28.95,0)
-end)
  
 game:GetService("RunService").Heartbeat:Connect(function()
   player["HumanoidRootPart"].Velocity = Vector3.new(30,0.0,0)
 end)
  
- 
-game:GetService("RunService").Heartbeat:Connect(function()
-for i,v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetAccessories()) do 
-if not v.Handle:FindFirstChild("AccessoryWeld") then 
-v.Handle.Velocity = Vector3.new(30,0,0)
-end
-end
-end)
 
-
-
-
-wait(2)
  
 --// MAIN \\--
  
+--//Settings\\--
+local Fling = true
+local FlingBlockInvisible = false
+local HighlightFlingBlock = false
+
+
 Bypass = "death"
-loadstring(game:GetObjects("rbxassetid://5325226148")[1].Source)()
------OPTIONS
- 
+loadstring(game:HttpGet('https://paste.ee/r/KAdwk'))()
+
 local IsDead = false
 local StateMover = true
- 
+
 local playerss = workspace.non
 local bbv,bullet
 if Bypass == "death" then
@@ -68,11 +43,11 @@ if Bypass == "death" then
 			end
 		end
 	end
- 
+
 	bbv = Instance.new("BodyPosition",bullet)
     bbv.Position = playerss.Torso.CFrame.p
 end
- 
+
 if Bypass == "death" then
 coroutine.wrap(function()
 	while true do
@@ -85,28 +60,46 @@ coroutine.wrap(function()
 	end
 end)()
 end
- 
+
+--[[local force = Instance.new("BodyForce",bullet)
+force.Force = Vector3.new(800,800,800)]]--
+
+if HighlightFlingBlock ~= false then
+    local Highlight = Instance.new("SelectionBox")
+    Highlight.Adornee = bullet
+    Highlight.Color3 = (typeof(FlingHighlightColor)=="Color3" and FlingHighlightColor) or (Color3.fromRGB(55,55,255))
+    Highlight.Parent = bullet
+    Highlight.Name = "HighlightBox"
+end
+
+bbav = Instance.new("BodyAngularVelocity",bullet)
+    bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+    bbav.P = 100000000000000000000000000000
+    bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
+
 local CDDF = {}
 local DamageFling = function(DmgPer)
+    if Fling ~= true then return end
 	if IsDead or Bypass ~= "death" or (DmgPer.Name == playerss.Name and DmgPer.Name == "non") or CDDF[DmgPer] or not DmgPer or not DmgPer:FindFirstChildOfClass("Humanoid") or DmgPer:FindFirstChildOfClass("Humanoid").Health <= 0 then return end
 	CDDF[DmgPer] = true; StateMover = false
 	local PosFling = (DmgPer:FindFirstChild("HumanoidRootPart") and DmgPer:FindFirstChild("HumanoidRootPart") .CFrame.p) or (DmgPer:FindFirstChildOfClass("Part") and DmgPer:FindFirstChildOfClass("Part").CFrame.p)
+    bullet.Rotation = playerss.Torso.Rotation
     bbav = Instance.new("BodyAngularVelocity",bullet)
     bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-    bbav.P = 1000000000000000000000000000
+    bbav.P = 100000000000000000000000000000
     bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
-    game:GetService("Debris"):AddItem(bbav,0.1)
-    bullet.Rotation = playerss.Torso.Rotation
+
 	for _=1,15 do
 		bbv.Position = PosFling
 		bullet.Position = PosFling
 		wait(0.03)
 	end
+	bbav:Destroy()
 	bbv.Position = playerss.Torso.CFrame.p
     bullet.Position = playerss.Torso.CFrame.p
 	CDDF[DmgPer] = false; StateMover = true
 end
- 
+
  
 -- Created by Nebula_Zorua --
 -- Your DeTERMINATION --
