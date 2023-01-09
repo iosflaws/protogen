@@ -1,3 +1,16 @@
+local h = Instance.new("Message")
+h.Parent = Workspace
+h.Text = "Flawed Reanimation is Loading..."
+wait(6)
+h:Remove()
+
+
+local player = game.Players.LocalPlayer.Character
+ 
+game:GetService("RunService").Heartbeat:Connect(function()
+  player["HumanoidRootPart"].Velocity = Vector3.new(30,0.0,0)
+end)
+
 --//Settings\\--
 local Fling = true
 local FlingBlockInvisible = false
